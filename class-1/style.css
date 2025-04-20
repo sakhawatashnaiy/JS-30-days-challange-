@@ -1,8 +1,7 @@
 html {
-      font-size: 10px;
-      background: url(../images/background.jpg);
-      /* background-color: black; */
-      background-repeat:  no-repeat;
+    font-size: 5px;
+    background: url(./images/background.jpg) bottom center;
+    background-size: cover;
   }
   
   body,html {
@@ -12,22 +11,22 @@ html {
   }
   
   .keys {
-     display: flex; 
-     flex: 1;
-      flex-wrap: wrap;
-     min-height: 100vh;
+    display: flex;
+    flex: 1;
+    min-height: 50vh;
     align-items: center;
-    justify-content: center;  
+    justify-content: center;
+    margin-top: 20px;
   }
   
   .key {
     border: .4rem solid black;
     border-radius: .5rem;
     margin: 1rem;
-    font-size: 0.5rem;
-     padding: 5px;
+    font-size: 1.5rem;
+    padding: .5rem;
     transition: all .07s ease;
-     width: 5%; 
+    width: 10rem;
     text-align: center;
     color: white;
     background: rgba(0,0,0,0.4);
@@ -42,7 +41,7 @@ html {
   
   kbd {
     display: block;
-    font-size: 2rem;
+    font-size: 4rem;
   }
   
   .sound {
