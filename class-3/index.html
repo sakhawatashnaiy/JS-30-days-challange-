@@ -16,6 +16,8 @@
       padding: var(--spacing);
       background: var(--base);
       filter: blur(var(--blur));
+      width:50% ;
+      height: 100px;
       
     }
      h1{
@@ -27,8 +29,8 @@
           background: #193549;
           color: white;
           font-family: 'helvetica neue', sans-serif;
-          font-weight: 100;
-          font-size: 20px;
+          font-weight: 40;
+          font-size: 10px;
       }
         
     .controls {
@@ -36,7 +38,7 @@
     }
 
     input {
-      width: 100px;
+      width: 110px;
     }
       
      
@@ -49,12 +51,12 @@
               <label for="spacing">Spacing:</label>
               <input   id="spacing" type="range" min="10" max="200" name="spacing" value="10" data-sizing="px">
 
- <label for="Blur">Blur:</label>
- <input id="Blur" type="range" value="10" min="0" max="25"
-  name="Blur" data-sizing="px">
+ <label for="blur">Blur:</label>
+ <input id="blur" type="range" value="10" min="0" max="25"
+  name="blur" data-sizing="px">
 
-    <label for="Base">Base Color</label>
-    <input id="Base" type="color"  name="Base" data-sizing="px" value="#ffc600">
+    <label for="base">Base Color</label>
+    <input id="base" type="color"  name="base" data-sizing="px" value="#ffc600">
  </div>
 
       <img src="https://plus.unsplash.com/premium_photo-1721268770804-f9db0ce102f8?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxmZWF0dXJlZC1waG90b3MtZmVlZHw1fHx8ZW58MHx8fHx8" alt="">
@@ -64,16 +66,18 @@
 
       <script>
 
-               const inputs = document.querySelectorAll('controls , input');
-                
-                 function handleUpdate(){
-                        const suffix = this.dataset.sizing || '' ;
-                         document.documentElement.style.setProperty(`--${this.name}`,this.value+suffix);
-                    
-                 }
-                   inputs.forEach(input => input.addEventListener('change' ,handleUpdate));
+               const inputs  = document.querySelectorAll('.controls  input');
 
-                   inputs.forEach(input => input.addEventListener('mousemove',handleUpdate));
+                //  console.log(inputs);
+
+                  function handleUpdate(){
+                       const suffix  = this.dataset.sizing || '';
+                        // console.log(suffix);
+                        document.documentElement.style.setProperty(`--${this.name}`, this.value + suffix);
+
+                  }
+                    inputs.forEach(input => input.addEventListener('change' , handleUpdate));
+                    inputs.forEach(input => input.addEventListener('mousemove' , handleUpdate))
 
     
       </script>
