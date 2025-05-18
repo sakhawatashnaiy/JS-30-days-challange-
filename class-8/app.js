@@ -20,7 +20,7 @@
     function draw(e){
           if(!isDrawing) return;
           console.log(e);
-          ctx.strokeStyle = `hsl(${hue}, 100%, 50%)`;
+          ctx.strokeStyle = `hsl(${hue}, 300%, 40%)`;
           ctx.beginPath();
           ctx.moveTo(lastX , lastY);
           ctx.lineTo(e.offsetX , e.offsetY);

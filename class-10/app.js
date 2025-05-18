@@ -1,26 +1,23 @@
- const checkboxes = document.querySelectorAll('.inbox input[type="checkbox"]');
+const checkboxes = document.querySelectorAll('input[type="checkbox"]');
+ 
+ let lastchecked;
+   function handlecheck(e){
+     let inbetween = false;
+         if(e.shiftKey && this.checked){
+              checkboxes.forEach(checkboxes =>{
+                  if(checkboxes === this || checkboxes ===
+                        lastchecked){
+                              inbetween = !inbetween;
+                        }
 
-let lastChecked;
+                           if(inbetween){
+                          checkboxes.checked = true;
 
-function handleCheck(e) {
-  // Check if they had the shift key down
-  // AND check that they are checking it
-  let inBetween = false;
-  if (e.shiftKey && this.checked) {
-    checkboxes.forEach(checkbox => {
-      console.log(checkbox);
-      if (checkbox === this || checkbox === lastChecked) {
-        inBetween = !inBetween;
-        console.log('Starting to check them in between!');
-      }
-
-      if (inBetween) {
-        checkbox.checked = true;
-      }
-    });
-  }
-
-  lastChecked = this;
-}
-
-checkboxes.forEach(checkbox => checkbox.addEventListener('click', handleCheck));
+                      }
+                      });
+              
+         }
+           lastchecked = this;       
+   }
+   checkboxes.forEach(checkbox => checkbox.addEventListener('click', handlecheck));
+    
