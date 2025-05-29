@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Order Fulfillment with Promise</title>
+  <style>
+    body { font-family: Arial, sans-serif; padding: 20px; }
+    input, button { margin: 10px 0; padding: 5px; width: 300px; }
+    .result { margin-top: 20px; padding: 10px; background: #f0f0f0; border-radius: 5px; }
+  </style>
+</head>
+<body>
+  <h3> Order Fulfillment System (Using Promise)</h3>
+  <label>Customer Name:<br><input type="text" id="customerName" /></label><br>
+  <label>Product Name:<br><input type="text" id="productName" /></label><br>
+  <label>Quantity:<br><input type="number" id="quantity" /></label><br>
+  <button onclick="placeOrder()">Place Order</button>
+
+  <div class="result" id="resultBox"></div>
+
+  <script>
+    function placeOrder() {
+      const customer = document.getElementById("customerName").value;
+      const product = document.getElementById("productName").value;
+      const quantity = parseInt(document.getElementById("quantity").value);
+
+      simulateOrder(customer, product, quantity)
+        .then(result => {
+          document.getElementById("resultBox").innerHTML = result;
+        })
+        .catch(error => {
+          document.getElementById("resultBox").innerHTML = `❌ ${error}`;
+        });
+    }
+
+    // Simulated async function using Promise
+    function simulateOrder(customer, product, quantity) {
+      const availableStock = 10;
+
+      return new Promise((resolve, reject) => {
+        setTimeout(() => {
+          if (quantity <= availableStock) {
+            const orderDate = new Date();
+            const shipDate = new Date(orderDate);
+            const deliveryDate = new Date(orderDate);
+
+            shipDate.setDate(orderDate.getDate() + 1);
+            deliveryDate.setDate(orderDate.getDate() + 4);
+
+            const result = `
+              ✅ Order Placed Successfully!<br><br>
+              👤 Customer: ${customer}<br>
+              📦 Product: ${product}<br>
+              🔢 Quantity: ${quantity}<br>
+              🗓️ Order Date: ${orderDate.toDateString()}<br>
+              🚚 Ship Date (Promise): ${shipDate.toDateString()}<br>
+              📬 Delivery Date (Promise): ${deliveryDate.toDateString()}<br>
+            `;
+            resolve(result);
+          } else {
+            reject(`Only ${availableStock} items are in stock.`);
+          }
+        }, 1000); // Simulate delay like real async operation
+      });
+    }
+  </script>
+</body>
+</html>
